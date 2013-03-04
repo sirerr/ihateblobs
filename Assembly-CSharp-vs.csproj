@@ -576,6 +576,7 @@
      <Compile Include="Assets\PlayMaker\Actions\iTween\iTweenShakeRotation.cs" />
      <Compile Include="Assets\PlayMaker\Actions\iTween\iTweenShakeScale.cs" />
      <Compile Include="Assets\PlayMaker\Actions\iTween\iTweenStop.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\particleEmitterOnOff.cs" />
      <Compile Include="Assets\PlayMaker\Include\iTweenFSMEvents.cs" />
      <Compile Include="Assets\iTween\iTween.cs" />
      <None Include="Assets\PlayMaker\Readme.txt" />
