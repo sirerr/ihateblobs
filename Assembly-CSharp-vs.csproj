@@ -581,8 +581,15 @@
      <Compile Include="Assets\iTween\iTween.cs" />
      <None Include="Assets\PlayMaker\Readme.txt" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
  <Reference Include="PlayMaker">
  <HintPath>Assets\PlayMaker\PlayMaker.dll</HintPath>
+ </Reference>
+ <Reference Include="RAINIndie">
+ <HintPath>Assets\RAIN\RAINIndie.dll</HintPath>
+ </Reference>
+ <Reference Include="Recast">
+ <HintPath>Assets\RAIN\Recast.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

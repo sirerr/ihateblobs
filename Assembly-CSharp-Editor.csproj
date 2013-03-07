@@ -65,13 +65,27 @@
      <Compile Include="Assets\PlayMaker\Editor\PlayMakerMainMenu.cs" />
      <Compile Include="Assets\PlayMaker\Editor\PlayMakerWelcomeWindow.cs" />
      <Compile Include="Assets\PlayMaker\Editor\ReportWindow.cs" />
+     <Compile Include="Assets\RAIN\Editor\ScriptTemplates\ActionTemplate_CS.cs" />
      <None Include="Assets\PlayMaker\Readme.txt" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
  <Reference Include="PlayMaker">
  <HintPath>Assets\PlayMaker\PlayMaker.dll</HintPath>
  </Reference>
  <Reference Include="PlayMakerEditor">
  <HintPath>Assets\PlayMaker\Editor\PlayMakerEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="RAINIndie">
+ <HintPath>Assets\RAIN\RAINIndie.dll</HintPath>
+ </Reference>
+ <Reference Include="Recast">
+ <HintPath>Assets\RAIN\Recast.dll</HintPath>
+ </Reference>
+ <Reference Include="RAINEditor">
+ <HintPath>Assets\RAIN\Editor\RAINEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="RecastEditor">
+ <HintPath>Assets\RAIN\Editor\RecastEditor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:\Program Files (x86)\Unity\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
