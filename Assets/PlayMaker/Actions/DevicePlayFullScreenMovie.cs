@@ -1,4 +1,4 @@
-﻿// (c) Copyright HutongGames, LLC 2010-2011. All rights reserved.
+﻿// (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
 
 using UnityEngine;
 
@@ -13,7 +13,7 @@ namespace HutongGames.PlayMaker.Actions
 		public FsmString moviePath;
 
 		[RequiredField]
-		[Tooltip("THis action will initiate a transition that fades the screen from your current content to the designated background color of the player. When playback finishes, the player uses another fade effect to transition back to your content.")]
+		[Tooltip("This action will initiate a transition that fades the screen from your current content to the designated background color of the player. When playback finishes, the player uses another fade effect to transition back to your content.")]
 		public FsmColor fadeColor;
 
 #if (UNITY_IPHONE || UNITY_ANDROID)

@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_0_0;UNITY_4_0;UNITY_STANDALONE_WIN;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_WIN;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_1_0;UNITY_4_1;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -44,6 +44,48 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonGUILayoutToolBarWithPlayers.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonGUILayoutToolBarWithRooms.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkConnectUsingSettings.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkCreateRoom.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkGetConnectionState.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkGetIsConnected.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkGetLastMessagePlayerProperties.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkGetPlayersCount.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkGetPlayersInRoomsCount.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkGetPlayersOnMasterCount.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkGetRoomProperties.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkGetRoomsCount.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkInstantiate.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkJoinRandomRoom.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkJoinRoom.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkLeaveRoom.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkSetIsMessageQueueRunning.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonNetworkSetPlayerName.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonViewGetID.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonViewGetIsMine.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonViewGetOwnerProperties.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonViewRpcBroadcastFsmEvent.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Actions\PhotonViewRpcBroadcastFsmEventToPlayer.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Scripts\PlayMakerPhotonGameObjectProxy.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Scripts\PlayMakerPhotonProxy.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Scripts\PlayMakerPhotonSynchProxy.cs" />
+     <Compile Include="Assets\Photon Unity Networking\PlayMaker\Scripts\PlayMakerPhotonView.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extension\PhotonView.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonClasses.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetSimSettingsGui.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonPlayer.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Room.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\RoomInfo.cs" />
+     <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\ServerSettings.cs" />
      <Compile Include="Assets\PlayMaker\Actions\ActivateGameObject.cs" />
      <Compile Include="Assets\PlayMaker\Actions\AddAnimationClip.cs" />
      <Compile Include="Assets\PlayMaker\Actions\AddComponent.cs" />
@@ -116,6 +158,7 @@
      <Compile Include="Assets\PlayMaker\Actions\DebugBool.cs" />
      <Compile Include="Assets\PlayMaker\Actions\DebugDrawShape.cs" />
      <Compile Include="Assets\PlayMaker\Actions\DebugFloat.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\DebugFsmVariable.cs" />
      <Compile Include="Assets\PlayMaker\Actions\DebugGameObject.cs" />
      <Compile Include="Assets\PlayMaker\Actions\DebugInt.cs" />
      <Compile Include="Assets\PlayMaker\Actions\DebugLog.cs" />
@@ -145,6 +188,7 @@
      <Compile Include="Assets\PlayMaker\Actions\FindChild.cs" />
      <Compile Include="Assets\PlayMaker\Actions\FindClosest.cs" />
      <Compile Include="Assets\PlayMaker\Actions\FindGameObject.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\FinishFSM.cs" />
      <Compile Include="Assets\PlayMaker\Actions\Flicker.cs" />
      <Compile Include="Assets\PlayMaker\Actions\FloatAbs.cs" />
      <Compile Include="Assets\PlayMaker\Actions\FloatAdd.cs" />
@@ -158,6 +202,9 @@
      <Compile Include="Assets\PlayMaker\Actions\FloatSignTest.cs" />
      <Compile Include="Assets\PlayMaker\Actions\FloatSubtract.cs" />
      <Compile Include="Assets\PlayMaker\Actions\FloatSwitch.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\FormatString.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\ForwardAllEvents.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\ForwardEvent.cs" />
      <Compile Include="Assets\PlayMaker\Actions\FsmEventOptions.cs" />
      <Compile Include="Assets\PlayMaker\Actions\FsmStateSwitch.cs" />
      <Compile Include="Assets\PlayMaker\Actions\FsmStateTest.cs" />
@@ -240,6 +287,8 @@
      <Compile Include="Assets\PlayMaker\Actions\GetFsmState.cs" />
      <Compile Include="Assets\PlayMaker\Actions\GetFsmString.cs" />
      <Compile Include="Assets\PlayMaker\Actions\GetFsmTexture.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\GetFsmVariable.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\GetFsmVariables.cs" />
      <Compile Include="Assets\PlayMaker\Actions\GetFsmVector2.cs" />
      <Compile Include="Assets\PlayMaker\Actions\GetFsmVector3.cs" />
      <Compile Include="Assets\PlayMaker\Actions\GetIPhoneSettings.cs" />
@@ -307,6 +356,7 @@
      <Compile Include="Assets\PlayMaker\Actions\InvokeMethod.cs" />
      <Compile Include="Assets\PlayMaker\Actions\IsKinematic.cs" />
      <Compile Include="Assets\PlayMaker\Actions\IsSleeping.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\KillDelayedEvents.cs" />
      <Compile Include="Assets\PlayMaker\Actions\LoadLevel.cs" />
      <Compile Include="Assets\PlayMaker\Actions\LoadLevelNum.cs" />
      <Compile Include="Assets\PlayMaker\Actions\LookAt.cs" />
@@ -393,9 +443,11 @@
      <Compile Include="Assets\PlayMaker\Actions\RemoveMixingTransform.cs" />
      <Compile Include="Assets\PlayMaker\Actions\ResetGUIMatrix.cs" />
      <Compile Include="Assets\PlayMaker\Actions\ResetInputAxes.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\RestartLevel.cs" />
      <Compile Include="Assets\PlayMaker\Actions\RewindAnimation.cs" />
      <Compile Include="Assets\PlayMaker\Actions\Rotate.cs" />
      <Compile Include="Assets\PlayMaker\Actions\RotateGUI.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\RunFSM.cs" />
      <Compile Include="Assets\PlayMaker\Actions\SampleCurve.cs" />
      <Compile Include="Assets\PlayMaker\Actions\ScaleGUI.cs" />
      <Compile Include="Assets\PlayMaker\Actions\ScaleTime.cs" />
@@ -443,6 +495,7 @@
      <Compile Include="Assets\PlayMaker\Actions\SetFsmRect.cs" />
      <Compile Include="Assets\PlayMaker\Actions\SetFsmString.cs" />
      <Compile Include="Assets\PlayMaker\Actions\SetFsmTexture.cs" />
+     <Compile Include="Assets\PlayMaker\Actions\SetFsmVariable.cs" />
      <Compile Include="Assets\PlayMaker\Actions\SetFsmVector2.cs" />
      <Compile Include="Assets\PlayMaker\Actions\SetFsmVector3.cs" />
      <Compile Include="Assets\PlayMaker\Actions\SetGUIAlpha.cs" />
@@ -581,8 +634,16 @@
      <Compile Include="Assets\iTween\iTween.cs" />
      <None Include="Assets\PlayMaker\Readme.txt" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\library\Photon3Unity3D.xml" />
+     <None Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\library\release_history.txt" />
      <None Include="Assets\AI\Resources\BehaviorTrees\jollytest.xml" />
+     <None Include="Assets\Photon Unity Networking\readme.txt" />
      <None Include="Assets\RAIN\Editor\ScriptTemplates\BehaviorTreeTemplate.xml" />
+     <None Include="Assets\PlayMaker\Versions\readme.txt" />
+     <None Include="Assets\Photon Unity Networking\changelog.txt" />
+ <Reference Include="Photon3Unity3D">
+ <HintPath>Assets\Photon Unity Networking\Plugins\PhotonNetwork\library\Photon3Unity3D.dll</HintPath>
+ </Reference>
  <Reference Include="PlayMaker">
  <HintPath>Assets\PlayMaker\PlayMaker.dll</HintPath>
  </Reference>

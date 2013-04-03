@@ -1,4 +1,4 @@
-// (c) Copyright HutongGames, LLC 2010-2011. All rights reserved.
+// (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
 
 using HutongGames.PlayMakerEditor;
 using UnityEditor;
@@ -11,65 +11,71 @@ using UnityEngine;
 [System.Serializable]
 class FsmEditorWindow : EditorWindow
 {
-	static FsmEditorWindow instance;
+    /// <summary>
+    /// Open the Fsm Editor and optionally show the Welcome Screen
+    /// </summary>
+    public static void OpenWindow()
+    {
+        GetWindow<FsmEditorWindow>();
+
+        if (EditorPrefs.GetBool(EditorPrefStrings.ShowWelcomeScreen, true))
+        {
+            GetWindow<PlayMakerWelcomeWindow>(true);
+        }
+    }
+
+    /// <summary>
+    /// Open the Fsm Editor and select an Fsm Component
+    /// </summary>
+    public static void OpenWindow(PlayMakerFSM fsmComponent)
+    {
+        OpenWindow();
+
+        FsmEditor.SelectFsm(fsmComponent.Fsm);
+    }
+
+    /// <summary>
+    /// Open the Fsm Editor and select an Fsm Component
+    /// </summary>
+    public static void OpenWindow(FsmTemplate fsmTemplate)
+    {
+        OpenWindow();
+
+        FsmEditor.SelectFsm(fsmTemplate.fsm);
+    }
+
+    /// <summary>
+    /// Is the Fsm Editor open?
+    /// </summary>
+    public static bool IsOpen()
+    {
+        return instance != null;
+    }
+
+	private static FsmEditorWindow instance;
 
 	[SerializeField]
-	FsmEditor fsmEditor;
+	private FsmEditor fsmEditor;
 	
 	// tool windows (can't open them inside dll)
 
-	//[SerializeField] PlayMakerWelcomeWindow welcomeWindow;
-	[SerializeField] FsmSelectorWindow fsmSelectorWindow;
-	[SerializeField] FsmTemplateWindow fsmTemplateWindow;
-	[SerializeField] FsmStateWindow stateSelectorWindow;
-	[SerializeField] FsmActionWindow actionWindow;
-	[SerializeField] FsmErrorWindow errorWindow;
-	[SerializeField] FsmLogWindow logWindow;
-	[SerializeField] ContextToolWindow toolWindow;
-	[SerializeField] GlobalEventsWindow globalEventsWindow;
-	[SerializeField] GlobalVariablesWindow globalVariablesWindow;
-	[SerializeField] ReportWindow reportWindow;
-	[SerializeField] AboutWindow aboutWindow;
-
-	/// <summary>
-	/// Open the Fsm Editor and optionally show the Welcome Screen
-	/// </summary>
-	public static void OpenWindow()
-	{
-		GetWindow<FsmEditorWindow>();
-
-		if (EditorPrefs.GetBool("PlayMaker.ShowWelcomeScreen", true))
-		{
-			GetWindow<PlayMakerWelcomeWindow>(true);
-		}
-	}
-
-	/// <summary>
-	/// Open the Fsm Editor and select an Fsm Component
-	/// </summary>
-	public static void OpenWindow(PlayMakerFSM fsmComponent)
-	{
-		OpenWindow();
-
-		FsmEditor.SelectFsm(fsmComponent.Fsm);
-	}
-
-	/// <summary>
-	/// Is the Fsm Editor open?
-	/// </summary>
-	public static bool IsOpen()
-	{
-		return instance != null;
-	}
+	[SerializeField] private FsmSelectorWindow fsmSelectorWindow;    
+    [SerializeField] private FsmTemplateWindow fsmTemplateWindow;
+    [SerializeField] private FsmStateWindow stateSelectorWindow;
+    [SerializeField] private FsmActionWindow actionWindow;
+    [SerializeField] private FsmErrorWindow errorWindow;
+    [SerializeField] private FsmLogWindow logWindow;
+    [SerializeField] private ContextToolWindow toolWindow;
+    [SerializeField] private GlobalEventsWindow globalEventsWindow;
+    [SerializeField] private GlobalVariablesWindow globalVariablesWindow;
+    [SerializeField] private ReportWindow reportWindow;
+    [SerializeField] private AboutWindow aboutWindow;
 
 	// ReSharper disable UnusedMember.Local
 
-	/// <summary>
 	/// Called when the Fsm Editor window is created
 	/// NOTE: happens on playmode change and recompile!
-	/// </summary>
-
-	void OnEnable()
+	private void OnEnable()
 	{
 		instance = this;
 
@@ -82,48 +88,25 @@ class FsmEditorWindow : EditorWindow
 		fsmEditor.OnEnable();
 	}
 	
-	/// <summary>
-	/// Do the GUI
-	/// </summary>
-	void OnGUI()
+	private void OnGUI()
 	{
 		fsmEditor.OnGUI();
 		
-/*		BeginWindows();
-		
-		fsmEditor.DoPopupWindows();
-		
-		EndWindows();*/
-		
 		if (Event.current.type == EventType.ValidateCommand)
     	{
-			//Debug.Log(Event.current.commandName);
-
-			switch (Event.current.commandName)
+            switch (Event.current.commandName)
 			{
 				case "UndoRedoPerformed":
-					Event.current.Use();
-					break;
-				
-				case "Copy":
-					Event.current.Use();
-					break;
-					
-				case "Paste":
-					Event.current.Use();
-					break;
-				
-				case "SelectAll":
+                case "Copy":
+                case "Paste":
+                case "SelectAll":
 					Event.current.Use();
 					break;
 			}
     	}
 		
 		if (Event.current.type == EventType.ExecuteCommand)
-		{
-			
-			//Debug.Log(Event.current.commandName);
-			
+		{			
 			switch (Event.current.commandName)
 			{
 				case "UndoRedoPerformed":
@@ -198,12 +181,69 @@ class FsmEditorWindow : EditorWindow
 				case "RepaintAll":
 					RepaintAllWindows();
 					break;
+
+                case "ChangeLanguage":
+                    ResetWindowTitles();
+			        break;
 			}
 	
 			GUIUtility.ExitGUI();
-		}
-	
+		}	
 	}
+
+    // called when you change editor language
+    public void ResetWindowTitles()
+    {
+        if (toolWindow != null)
+        {
+            toolWindow.InitWindowTitle();
+        }
+
+        if (fsmSelectorWindow != null)
+        {
+            fsmSelectorWindow.InitWindowTitle();
+        }
+
+        if (stateSelectorWindow != null)
+        {
+            stateSelectorWindow.InitWindowTitle();
+        }
+
+        if (actionWindow != null)
+        {
+            actionWindow.InitWindowTitle();
+        }
+
+        if (globalEventsWindow != null)
+        {
+            globalEventsWindow.InitWindowTitle();
+        }
+
+        if (globalVariablesWindow != null)
+        {
+            globalVariablesWindow.InitWindowTitle();
+        }
+
+        if (errorWindow != null)
+        {
+            errorWindow.InitWindowTitle();
+        }
+
+        if (logWindow != null)
+        {
+            logWindow.InitWindowTitle();
+        }
+
+        if (reportWindow != null)
+        {
+            reportWindow.InitWindowTitle();
+        }
+
+        if (fsmTemplateWindow != null)
+        {
+            fsmTemplateWindow.InitWindowTitle();
+        }
+    }
 
 	public void RepaintAllWindows()
 	{
@@ -252,35 +292,40 @@ class FsmEditorWindow : EditorWindow
 			reportWindow.Repaint();
 		}
 
+        if (fsmTemplateWindow != null)
+        {
+            fsmTemplateWindow.Repaint();
+        }
+
 		Repaint();
 	}
 
-	void Update()
+    private void Update()
 	{
 		fsmEditor.Update();
 	}
 
-	void OnInspectorUpdate()
+    private void OnInspectorUpdate()
 	{
 		fsmEditor.OnInspectorUpdate();
 	}
 
-	void OnFocus()
+    private void OnFocus()
 	{
 		fsmEditor.OnFocus();
 	}
 
-	void OnSelectionChange()
+    private void OnSelectionChange()
 	{
 		fsmEditor.OnSelectionChange();
 	}
 
-	void OnHierarchyChange()
+    private void OnHierarchyChange()
 	{
 		fsmEditor.OnHierarchyChange();
 	}
 
-	void OnProjectChange()
+    private void OnProjectChange()
 	{
 		if (fsmEditor != null)
 		{
@@ -288,7 +333,7 @@ class FsmEditorWindow : EditorWindow
 		}
 	}
 
-	void OnDisable()
+    private void OnDisable()
 	{
 		if (fsmEditor != null)
 		{
@@ -298,7 +343,7 @@ class FsmEditorWindow : EditorWindow
 		instance = null;
 	}
 
-	void OnDestroy()
+	private void OnDestroy()
 	{
 		if (toolWindow != null)
 		{
@@ -354,6 +399,8 @@ class FsmEditorWindow : EditorWindow
 		{
 			aboutWindow.SafeClose();
 		}
+
+        fsmEditor.OnDestroy();
 	}
 
 	// ReSharper restore UnusedMember.Local

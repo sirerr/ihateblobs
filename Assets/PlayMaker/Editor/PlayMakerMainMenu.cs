@@ -1,19 +1,22 @@
-﻿// (c) Copyright HutongGames, LLC 2010-2011. All rights reserved.
+﻿// (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
 
+using System.ComponentModel;
 using HutongGames.PlayMakerEditor;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
+[Localizable(false)]
 static class PlayMakerMainMenu
 {
-	[MenuItem("PlayMaker/PlayMaker Editor")]
+	[MenuItem("PlayMaker/PlayMaker Editor", false, 1)]
 	public static void OpenFsmEditor()
 	{
 		FsmEditorWindow.OpenWindow();
 	}
 
-	#region EDITOR WINDOWS
+	#region EDITOR WINDOWS 
+
+    // priority starts at 10, leaving room for more items above
 
 	[MenuItem("PlayMaker/Editor Windows/FSM Browser", true)]
 	public static bool ValidateOpenFsmSelectorWindow()
@@ -21,7 +24,7 @@ static class PlayMakerMainMenu
 		return FsmEditorWindow.IsOpen();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/FSM Browser")]
+	[MenuItem("PlayMaker/Editor Windows/FSM Browser", false, 10)]
 	public static void OpenFsmSelectorWindow()
 	{
 		FsmEditor.OpenFsmSelectorWindow();
@@ -33,7 +36,7 @@ static class PlayMakerMainMenu
 		return FsmEditorWindow.IsOpen();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/State Browser")]
+	[MenuItem("PlayMaker/Editor Windows/State Browser", false, 11)]
 	public static void OpenStateSelectorWindow()
 	{
 		FsmEditor.OpenStateSelectorWindow();
@@ -45,7 +48,7 @@ static class PlayMakerMainMenu
 		return FsmEditorWindow.IsOpen();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/Templates Browser")]
+	[MenuItem("PlayMaker/Editor Windows/Templates Browser", false, 12)]
 	public static void OpenFsmTemplateWindow()
 	{
 		FsmEditor.OpenFsmTemplateWindow();
@@ -57,7 +60,7 @@ static class PlayMakerMainMenu
 		return FsmEditorWindow.IsOpen();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/Edit Tool Window")]
+	[MenuItem("PlayMaker/Editor Windows/Edit Tool Window", false, 13)]
 	public static void OpenToolWindow()
 	{
 		FsmEditor.OpenToolWindow();
@@ -69,7 +72,7 @@ static class PlayMakerMainMenu
 		return FsmEditorWindow.IsOpen();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/Action Browser")]
+	[MenuItem("PlayMaker/Editor Windows/Action Browser", false, 14)]
 	public static void OpenActionWindow()
 	{
 		FsmEditor.OpenActionWindow();
@@ -81,7 +84,7 @@ static class PlayMakerMainMenu
 		return FsmEditorWindow.IsOpen();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/Global Variables")]
+	[MenuItem("PlayMaker/Editor Windows/Global Variables", false, 15)]
 	public static void OpenGlobalVariablesWindow()
 	{
 		FsmEditor.OpenGlobalVariablesWindow();
@@ -93,7 +96,7 @@ static class PlayMakerMainMenu
 		return FsmEditorWindow.IsOpen();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/Event Browser")]
+	[MenuItem("PlayMaker/Editor Windows/Event Browser", false, 16)]
 	public static void OpenGlobalEventsWindow()
 	{
 		FsmEditor.OpenGlobalEventsWindow();
@@ -105,19 +108,19 @@ static class PlayMakerMainMenu
 		return FsmEditorWindow.IsOpen();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/Log Window")]
+	[MenuItem("PlayMaker/Editor Windows/Log Window", false, 17)]
 	public static void OpenFsmLogWindow()
 	{
 		FsmEditor.OpenFsmLogWindow();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/Console", true)]
+	[MenuItem("PlayMaker/Editor Windows/Editor Log", true)]
 	public static bool ValidateOpenReportWindow()
 	{
 		return FsmEditorWindow.IsOpen();
 	}
 
-	[MenuItem("PlayMaker/Editor Windows/Console")]
+	[MenuItem("PlayMaker/Editor Windows/Editor Log", false, 18)]
 	public static void OpenReportWindow()
 	{
 		FsmEditor.OpenReportWindow();
@@ -125,21 +128,17 @@ static class PlayMakerMainMenu
 
 	#endregion
 
-	//[MenuItem("PlayMaker/")]
-
 	#region COMPONENTS
 
-	//[MenuItem("Assets/Add PlayMakerFSM", true)]
-	//[MenuItem("GameObject/Add PlayMakerFSM", true)]
+    // priority starts at 30, leaving room for more items above
+
 	[MenuItem("PlayMaker/Components/Add FSM To Selected Objects", true)]
 	public static bool ValidateAddFsmToSelected()
 	{
 		return Selection.activeGameObject != null;
 	}
 
-	//[MenuItem("Assets/Add PlayMakerFSM", false, 100)]
-	//[MenuItem("GameObject/Add PlayMakerFSM", false, 10000)]
-	[MenuItem("PlayMaker/Components/Add FSM To Selected Objects")]
+	[MenuItem("PlayMaker/Components/Add FSM To Selected Objects", false, 19)]
 	public static void AddFsmToSelected()
 	{
 		FsmBuilder.AddFsmToSelected();
@@ -153,7 +152,7 @@ static class PlayMakerMainMenu
 		return (Object.FindObjectOfType(typeof(PlayMakerGUI)) as PlayMakerGUI) == null;
 	}
 
-	[MenuItem("PlayMaker/Components/Add PlayMakerGUI to Scene")]
+	[MenuItem("PlayMaker/Components/Add PlayMakerGUI to Scene", false, 20)]
 	public static void AddPlayMakerGUI()
 	{
 		PlayMakerGUI.Instance.enabled = true;
@@ -163,7 +162,7 @@ static class PlayMakerMainMenu
 
 	#region TOOLS
 
-	[MenuItem("PlayMaker/Tools/Load All PlayMaker Prefabs In Project")]
+	[MenuItem("PlayMaker/Tools/Load All PlayMaker Prefabs In Project", false, 25)]
 	public static void LoadAllPrefabsInProject()
 	{
 		var paths = FsmEditorUtility.LoadAllPrefabsInProject();
@@ -184,27 +183,27 @@ static class PlayMakerMainMenu
 		}
 	}
 
-	[MenuItem("PlayMaker/Tools/Custom Action Wizard")]
-	private static void CreateWizard()
+	[MenuItem("PlayMaker/Tools/Custom Action Wizard", false, 26)]
+    public static void CreateWizard()
 	{
 		EditorWindow.GetWindow<PlayMakerCustomActionWizard>(true);
 	}
 
-	[MenuItem("PlayMaker/Tools/Export Globals")]
-	private static void ExportGlobals()
+	[MenuItem("PlayMaker/Tools/Export Globals", false, 27)]
+    public static void ExportGlobals()
 	{
 		FsmEditorUtility.ExportGlobals();
 	}
 
 	
-	[MenuItem("PlayMaker/Tools/Import Globals")]
-	private static void ImportGlobals()
+	[MenuItem("PlayMaker/Tools/Import Globals", false, 28)]
+    public static void ImportGlobals()
 	{
 		FsmEditorUtility.ImportGlobals();
 	}
 
-	[MenuItem("PlayMaker/Tools/Documentation Helpers")]
-	private static void DocHelpers()
+	[MenuItem("PlayMaker/Tools/Documentation Helpers", false, 29)]
+    public static void DocHelpers()
 	{
 		EditorWindow.GetWindow<PlayMakerDocHelpers>(true);
 	}
@@ -214,39 +213,39 @@ static class PlayMakerMainMenu
 
 	#region DOCUMENTATION
 
-	[MenuItem("PlayMaker/Online Resources/HutongGames")]
+	[MenuItem("PlayMaker/Online Resources/HutongGames", false, 35)]
 	public static void HutongGames()
 	{
 		Application.OpenURL("http://www.hutonggames.com/");
 	}
 
-	[MenuItem("PlayMaker/Online Resources/Online Manual")]
+    [MenuItem("PlayMaker/Online Resources/Online Manual", false, 36)]
 	public static void OnlineManual()
 	{
 		EditorCommands.OpenWikiHelp();
 		//Application.OpenURL("https://hutonggames.fogbugz.com/default.asp?W1");
 	}
 
-	[MenuItem("PlayMaker/Online Resources/Video Tutorials")]
+    [MenuItem("PlayMaker/Online Resources/Video Tutorials", false, 37)]
 	public static void VideoTutorials()
 	{
 		Application.OpenURL("http://www.screencast.com/users/HutongGames/folders/PlayMaker");
 	}
 
-	[MenuItem("PlayMaker/Online Resources/YouTube Channel")]
+    [MenuItem("PlayMaker/Online Resources/YouTube Channel", false, 38)]
 	public static void YouTubeChannel()
 	{
 		Application.OpenURL("http://www.youtube.com/user/HutongGamesLLC");
 	}
 
-	[MenuItem("PlayMaker/Online Resources/PlayMaker Forums")]
+    [MenuItem("PlayMaker/Online Resources/PlayMaker Forums", false, 39)]
 	public static void PlayMakerForum()
 	{
 		Application.OpenURL("http://hutonggames.com/playmakerforum/");
 	}
 
 	//[MenuItem("PlayMaker/Documentation/")]
-	[MenuItem("PlayMaker/Online Resources/Release Notes")]
+    [MenuItem("PlayMaker/Online Resources/Release Notes", false, 40)]
 	public static void ReleaseNotes()
 	{
 		EditorCommands.OpenWikiPage(WikiPages.ReleaseNotes);
@@ -255,13 +254,13 @@ static class PlayMakerMainMenu
 
 	#endregion
 
-	[MenuItem("PlayMaker/Submit Bug Report")]
-	private static void SubmitBug()
+    [MenuItem("PlayMaker/Tools/Submit Bug Report", false, 30)]
+    public static void SubmitBug()
 	{
 		EditorWindow.GetWindow<PlayMakerBugReportWindow>(true);
 	}
 
-	[MenuItem("PlayMaker/Welcome Screen")]
+    [MenuItem("PlayMaker/Welcome Screen", false, 45)]
 	public static void OpenWelcomeWindow()
 	{
 		EditorWindow.GetWindow<PlayMakerWelcomeWindow>(true);
@@ -275,7 +274,7 @@ static class PlayMakerMainMenu
 		AssetStore.Open("1z");
 	}*/
 
-	[MenuItem("PlayMaker/About PlayMaker...")]
+	[MenuItem("PlayMaker/About PlayMaker...", false, 46)]
 	public static void OpenAboutWindow()
 	{
 		EditorWindow.GetWindow<AboutWindow>(true);
